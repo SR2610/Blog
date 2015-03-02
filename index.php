@@ -42,7 +42,7 @@
 			echo "<a href='index.php?start=".($start+5) ."'>Previous Page</a>";
 		}
 		
-		if ($end>0){
+		if ($end>1){
 			echo '<a href="index.php?start='.($start-5) .'">Next Page</a>';
 		}
 	?>
