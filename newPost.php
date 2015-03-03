@@ -19,7 +19,7 @@
 	<br><br>
 	<label for="content">Body:</label>
 	<br>
-	<textarea name="content" cols="100" rows="20"></textarea>
+	<textarea name="content" cols="100" rows="20"><?php echo htmlspecialchars($_POST['content']);?></textarea>
 	<br><br>
 	<input type="submit" name="Post"/>
 	</fieldset>
