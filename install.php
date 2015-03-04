@@ -28,7 +28,7 @@
 						$string = "<?php\ndefine('DBUSERNAME','".$un."');\ndefine('DBPASSWORD','".$pw."');\ndefine('DB','".$db."');\n?>";
 						fwrite($config,$string);
 						fclose($config);
-						mysqli_query($conn,"CREATE TABLE `$db`.`Posts` ( `ID` INT(11) NOT NULL AUTO_INCREMENT , `Title` VARCHAR(40) NOT NULL , `Content` LONGTEXT NOT NULL , `Author` VARCHAR(20) NOT NULL , `Date` DATE NOT NULL , PRIMARY KEY (`ID`) ) ENGINE = InnoDB;");
+						mysqli_query($conn,"CREATE TABLE `$db`.`Posts` ( `ID` INT(11) NOT NULL AUTO_INCREMENT , `Title` VARCHAR(128) NOT NULL , `Content` LONGTEXT NOT NULL , `Author` VARCHAR(20) NOT NULL , `Date` DATE NOT NULL , PRIMARY KEY (`ID`) ) ENGINE = InnoDB;");
 						
 						mysqli_query($conn,"CREATE TABLE `$db`.`Users` ( `Username` VARCHAR(20) NOT NULL , `Password` VARCHAR(30) NOT NULL , PRIMARY KEY (`Username`) ) ENGINE = InnoDB;");
 						header("Location:install.php?step=2");
