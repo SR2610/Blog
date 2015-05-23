@@ -30,7 +30,7 @@
 						fclose($config);
 						mysqli_query($conn,"CREATE TABLE `$db`.`Posts` ( `ID` INT(11) NOT NULL AUTO_INCREMENT , `Title` VARCHAR(128) NOT NULL , `Content` LONGTEXT NOT NULL , `Author` VARCHAR(20) NOT NULL , `Date` DATE NOT NULL , PRIMARY KEY (`ID`) ) ENGINE = InnoDB;");
 						
-						mysqli_query($conn,"CREATE TABLE `$db`.`Users` ( `Username` VARCHAR(20) NOT NULL , `Password` VARCHAR(30) NOT NULL , PRIMARY KEY (`Username`) ) ENGINE = InnoDB;");
+						mysqli_query($conn,"CREATE TABLE `$db`.`Users` ( `Username` VARCHAR(20) NOT NULL , `Password` VARCHAR(255) NOT NULL , PRIMARY KEY (`Username`) ) ENGINE = InnoDB;");
 						header("Location:install.php?step=2");
 					}
 
@@ -47,7 +47,7 @@
 				else {
 					include("includes/dbInfo.php");
 					$conn = mysqli_connect("localhost",DBUSERNAME,DBPASSWORD,DB);
-					if (mysqli_query($conn,"INSERT INTO `".DB."`.`Users` (`Username`, `Password`) VALUES ('$username', '$pw1')")){
+					if (mysqli_query($conn,"INSERT INTO `".DB."`.`Users` (`Username`, `Password`) VALUES ('$username', password_hash($pw1, PASSWORD_DEFAULT))")){
 						header("Location:install.php?step=3");
 					}
 				}
